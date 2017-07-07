@@ -1,0 +1,51 @@
+#root {
+    margin: 10px;
+}
+ul {
+    width: 40%;
+}
+ul li {
+    list-style-type: none;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+    padding: 2px;
+}
+ul.navbar {
+    width: 100%;
+}
+ul.navbar li {
+    display: inline-block;
+    list-style-type: none;
+    padding: 5px;
+    border-bottom: 1px solid #000;
+}
+ul.navbar li a {
+    text-decoration: none;
+    font-family: Ariel;
+}
+ul.navbar li a:hover {
+    font-weight: bold;
+}
+.selected {
+    color: green;
+    text-shadow: 1px 1px 2px #666;
+}
+span.softwareType {
+    border: 1px solid #ccc;
+    padding: 4px;
+    font-size: 10pt;
+    cursor: pointer;
+}
+span.softwareType:hover {
+    background-color: #ccc;
+}
+.current {
+    background: #cdebea;
+    font-weight: bold;
+    border-bottom-color: #cdebae;
+}
+div.softwareList {
+    border: 1px solid #ccc;
+    margin-top: 3px;
+    background-color: #cdebea;
+}
