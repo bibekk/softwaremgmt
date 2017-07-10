@@ -46,7 +46,7 @@ class AddSoftware extends React.Component{
         var message = [];
         if(this.state.softwareAdded !=null){
             message.push(<span key='100'>{this.state.softwareAdded} added successfully &nbsp;
-                         <button onClick={()=>{this.setState({softwareAdded: null})}}>Clear</button></span>);
+                         <button className='btn btn-info' onClick={()=>{this.setState({softwareAdded: null})}}>Clear</button></span>);
         }
         
         this.state.categories.forEach(function(c){
@@ -55,13 +55,17 @@ class AddSoftware extends React.Component{
             );
         });
         return(
-           <div style={{ 'backgroundColor': '#ebebeb', padding:'20px'}}>
+           <div  style={{ 'backgroundColor': '#ebebeb', padding:'20px'}}>
               <h2>Add Software</h2>
-              <input type="text" ref="txtName" placeholder="Software Name"/>
-              <select ref="selType">
-                {cat}
-              </select>
-              <button onClick={this.postData}>Add</button>
+              <div className='form-group'>
+                <input className='form-control' type="text" ref="txtName" placeholder="Software Name"/>
+              </div>
+              <div className='form-group'>
+                 <select className='form-control' ref="selType">
+                    {cat}
+                </select>
+              </div>
+              <button className='btn btn-primary' onClick={this.postData}>Add</button>
             {/*<SoftwareList/>*/}
              <div style={{height:'40px'}}>{message}</div>
             </div>

@@ -77,33 +77,48 @@ class SoftwareCategory extends Component {
           this.state.categories.forEach(function (v) {
              if(v.tbl_software_typeid !== this.state.editModeIndex){
                  cat.push(
-                    <li key ={v.tbl_software_typeid}>{v.software_type}
-                     <button style={{float:'right'}} onClick={()=>this.deleteCategoryByID(v.tbl_software_typeid)}>Delete</button>
-                     <button style={{float: "right"}} onClick={()=>{ this.setState({editModeIndex: v.tbl_software_typeid})} }>Edit</button>
+                    <li className='list-group-item' key ={v.tbl_software_typeid}>{v.software_type} 
+                     <button className='pull-right btn btn-xs btn-danger' onClick={()=>this.deleteCategoryByID(v.tbl_software_typeid)}>Delete</button>
+                     <button className='btn btn-primary btn-xs pull-right' onClick={()=>{ this.setState({editModeIndex: v.tbl_software_typeid})} }>Edit</button>
                     </li>
                     );
              }else{
                  cat.push(
                    <li key ={v.tbl_software_typeid}>
-                        <input type="text" ref="software_type" defaultValue={v.software_type} />
-                        <button onClick={()=>this.updateCategory(v.tbl_software_typeid)}>Update</button>
-                        <button onClick={()=>{  this.setState({editModeIndex:null}) }}>Cancel</button>
+                        <div>
+                            <div className='form-group'>
+                                <input type="text" ref="software_type" className='form-control' defaultValue={v.software_type} />
+                            </div>
+                            <button className='btn btn-primary ' onClick={()=>this.updateCategory(v.tbl_software_typeid)}>Update</button>
+                            <button className='btn btn-danger ' onClick={()=>{  this.setState({editModeIndex:null}) }}>Cancel</button>
+                        </div>
                    </li>
                  );
              }
            },this);
            
            if(this.state.addMode){
-               addCat.push(<div key='100'><br/><input type='text' ref='cat'/><button onClick={this.addCategory}>Add</button>
-                           <button onClick={()=>{this.setState({addMode: false})}}>Cancel</button></div>);
+               addCat.push(<div key='100'><br/>
+                           <div className='form-group'>
+                                <input placeholder='Category' type='text' className='form-control' ref='cat'/>
+                           </div>
+                           <div className='form-group'>
+                                <button className='btn btn-primary' onClick={this.addCategory}>Add</button>
+                                <button className='btn btn-danger' onClick={()=>{this.setState({addMode: false})}}>Cancel</button>
+                            </div>
+
+                            </div>);
+
            }
 
          return(
            <div>
              <h2>Software Categories</h2>
-             <button onClick={()=>{this.setState({addMode: true})}}>Add</button>
+             <div>
+                <button className='btn btn-primary'><span className='glyphicon glyphicon-plus' onClick={()=>{this.setState({addMode: true})}}>Add</span></button>
              {addCat}
-             <ul>
+             </div>
+             <ul className='list-group'>
                 {cat}
              </ul>
           

@@ -11,6 +11,8 @@ import SoftwareCategory from './Components/SoftwareCategory';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
+//bootstrap
+
 
 
 ReactDOM.render((

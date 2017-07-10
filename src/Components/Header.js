@@ -4,10 +4,10 @@ import {NavLink} from 'react-router-dom';
 class Header extends React.Component{
     render(){
         return(
-            <ul className='navbar'>
-                <li><NavLink activeClassName="selected" to="/" exact={true} >Home</NavLink></li>
-                <li><NavLink activeClassName="selected" to="/AddSoftware">Manage</NavLink></li>
-                <li><NavLink activeClassName="selected" to="/Categories">Categories</NavLink></li>
+            <ul className='nav nav-tabs navbar-inverse   nabar-static-top'>
+                <li><NavLink activeClassName="active" to="/" exact={true} >Home</NavLink></li>
+                <li><NavLink activeClassName="active" to="/AddSoftware">Manage</NavLink></li>
+                <li><NavLink activeClassName="active" to="/Categories">Categories</NavLink></li>
             </ul>
         );
     }

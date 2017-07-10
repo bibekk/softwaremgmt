@@ -66,13 +66,12 @@ class SoftwareList extends Component {
     render() {
           var soft = [];
           var cat = [];
-          var catCount =[];
         
           this.state.softwares.forEach(function (v) {
              if(v.software_type === this.state.currentCat){
                  soft.push(
-                     <li key ={v.software_id}>{v.software_name} <span style={{'fontSize': '10px',float:'right'}}></span>
-                     <button style={{float: 'right'}} onClick={()=>this.deleteSoftwareByID(v.software_id)}>Delete</button></li>
+                     <li  role='presentation' key ={v.software_id} className='list-group-item'>{v.software_name}
+                     <button className='pull-right btn btn-danger btn-xs' onClick={()=>this.deleteSoftwareByID(v.software_id)}>Delete</button></li>
                  );
              }
            },this);
@@ -80,7 +79,7 @@ class SoftwareList extends Component {
         
           this.state.categories.forEach(function(v){
              cat.push(
-                 <span key={v.tbl_software_typeid} className={this.state.currentCat === v.software_type?"softwareType current":"softwareType"} onClick={() => this.setState({currentCat : v.software_type})}>{v.software_type}({v.total})</span>
+                 <li  key={v.tbl_software_typeid} className={this.state.currentCat === v.software_type?"active":""} onClick={() => this.setState({currentCat : v.software_type})}>{v.software_type}<span className='badge'>{v.total}</span></li>
              ); 
           },this);
             
@@ -89,9 +88,13 @@ class SoftwareList extends Component {
          return(
            <div>
              <h2>Software Lists</h2>
-             <div>{cat}</div>
+             <div>
+               <ul className ="software-nav nav nav-tabs">
+                {cat}
+               </ul>
+             </div>
              <div className = "softwareList">
-                 <ul>
+                 <ul className='list-group'>
                     {soft}
                  </ul>
              </div>
