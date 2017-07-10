@@ -66,6 +66,7 @@ class SoftwareList extends Component {
     render() {
           var soft = [];
           var cat = [];
+          var catCount =[];
         
           this.state.softwares.forEach(function (v) {
              if(v.software_type === this.state.currentCat){
@@ -76,11 +77,14 @@ class SoftwareList extends Component {
              }
            },this);
         
+        
           this.state.categories.forEach(function(v){
              cat.push(
-                 <span key={v.tbl_software_typeid} className={this.state.currentCat === v.software_type?"softwareType current":"softwareType"} onClick={() => this.setState({currentCat : v.software_type})}>{v.software_type}</span>
+                 <span key={v.tbl_software_typeid} className={this.state.currentCat === v.software_type?"softwareType current":"softwareType"} onClick={() => this.setState({currentCat : v.software_type})}>{v.software_type}({v.total})</span>
              ); 
           },this);
+            
+
 
          return(
            <div>
