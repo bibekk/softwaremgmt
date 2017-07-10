@@ -45,8 +45,8 @@ class AddSoftware extends React.Component{
         var cat=[];
         var message = [];
         if(this.state.softwareAdded !=null){
-            message.push(<span key='100'>{this.state.softwareAdded} added successfully &nbsp;
-                         <button className='btn btn-info' onClick={()=>{this.setState({softwareAdded: null})}}>Clear</button></span>);
+            message.push(<div className='alert alert-success' key='100'>{this.state.softwareAdded} added successfully &nbsp;
+                         <button className='btn btn-info' onClick={()=>{this.setState({softwareAdded: null})}}>Close</button></div>);
         }
         
         this.state.categories.forEach(function(c){
@@ -67,7 +67,8 @@ class AddSoftware extends React.Component{
               </div>
               <button className='btn btn-primary' onClick={this.postData}>Add</button>
             {/*<SoftwareList/>*/}
-             <div style={{height:'40px'}}>{message}</div>
+            <br/><br/>
+                {message}
             </div>
         );
     }

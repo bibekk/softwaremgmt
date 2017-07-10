@@ -11,7 +11,8 @@ class SoftwareList extends Component {
         this.state = {
             softwares: [],
             categories: [],
-            currentCat : null
+            currentCat : null,
+            editModeIndex: null
         }
         
         this.setData = this.setData.bind(this);
@@ -62,6 +63,18 @@ class SoftwareList extends Component {
        });
     }
     
+    updateSoftwareByID(id) {
+       // console.log(id,this.refs.software_name.value);
+       this.sm.updateSoftwareByID(id,this.refs.software_name.value).then(function(resp){
+            if(resp === 200){
+                this.setState({editModeIndex:null});
+                this.getSoftwareList();
+            }
+       }.bind(this)).catch(function(err){
+           alert(err);
+       });
+    }
+    
 
     render() {
           var soft = [];
@@ -69,17 +82,31 @@ class SoftwareList extends Component {
         
           this.state.softwares.forEach(function (v) {
              if(v.software_type === this.state.currentCat){
-                 soft.push(
-                     <li  role='presentation' key ={v.software_id} className='list-group-item'>{v.software_name}
-                     <button className='pull-right btn btn-danger btn-xs' onClick={()=>this.deleteSoftwareByID(v.software_id)}>Delete</button></li>
-                 );
+                 if(v.software_id !== this.state.editModeIndex){
+                     soft.push(
+                         <li  role='presentation' key ={v.software_id} className='list-group-item'>{v.software_name}
+                            <button className='pull-right btn btn-danger btn-xs' onClick={()=>this.deleteSoftwareByID(v.software_id)}>Delete</button>
+                            <button className='pull-right btn btn-primary btn-xs' onClick={()=>this.setState({editModeIndex: v.software_id})}>Edit</button>
+                         </li>
+                     );
+                } else{
+                    soft.push(
+                         <li  role='presentation' key ={v.software_id} className='list-group-item'>
+                            <div className='form-group'><input type='text' ref='software_name' defaultValue={v.software_name}/></div>
+                            <div className='form-group'>
+                                <button className=' btn btn-danger btn-xs' onClick={()=>this.updateSoftwareByID(v.software_id)}>Update</button>
+                                <button className=' btn btn-primary btn-xs' onClick={()=>this.setState({editModeIndex: null})}>Cancel</button>
+                            </div>
+                         </li>
+                     );                   
+               }
              }
            },this);
         
         
           this.state.categories.forEach(function(v){
              cat.push(
-                 <li  key={v.tbl_software_typeid} className={this.state.currentCat === v.software_type?"active":""} onClick={() => this.setState({currentCat : v.software_type})}>{v.software_type}<span className='badge'>{v.total}</span></li>
+                 <li  key={v.tbl_software_typeid} className={this.state.currentCat === v.software_type?"active":""} onClick={() => this.setState({currentCat : v.software_type})}><span>{v.software_type}</span>&nbsp;&nbsp;<span className='badge'>{v.total}</span></li>
              ); 
           },this);
             

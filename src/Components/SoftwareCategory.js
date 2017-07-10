@@ -118,6 +118,8 @@ class SoftwareCategory extends Component {
                 <button className='btn btn-primary'><span className='glyphicon glyphicon-plus' onClick={()=>{this.setState({addMode: true})}}>Add</span></button>
              {addCat}
              </div>
+            <br/><br/>
+             <span className='label label-info'>{this.state.categories.length} categories</span>
              <ul className='list-group'>
                 {cat}
              </ul>

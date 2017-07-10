@@ -75,6 +75,21 @@ class SoftwareModel extends React.Component{
             }); 
         })
     }
+    
+    updateSoftwareByID(id, software_name){
+        var _api = this._api;
+        return new Promise(function(resolve, reject){
+            fetch(_api  + "/Softwares/"+id, {
+                method: 'put',
+                headers: new Headers({ 'Content-Type': 'application/json'}),
+                body: JSON.stringify({software_id: id , software_name: software_name})
+            }).then(function (data) {
+                resolve(200);
+            }).catch(function (err) {
+                alert(err);
+            })
+        })
+    }
 }
 
 export default SoftwareModel;
