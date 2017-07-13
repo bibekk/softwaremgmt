@@ -44,7 +44,7 @@ class AddSoftware extends React.Component{
     render(){
         var cat=[];
         var message = [];
-        if(this.state.softwareAdded !=null){
+        if(this.state.softwareAdded !== null){
             message.push(<div className='alert alert-success' key='100'>{this.state.softwareAdded} added successfully &nbsp;
                          <button className='btn btn-info' onClick={()=>{this.setState({softwareAdded: null})}}>Close</button></div>);
         }
@@ -55,7 +55,7 @@ class AddSoftware extends React.Component{
             );
         });
         return(
-           <div  style={{ 'backgroundColor': '#ebebeb', padding:'20px'}}>
+           <div className='sl-container'>
               <h2>Add Software</h2>
               <div className='form-group'>
                 <input className='form-control' type="text" ref="txtName" placeholder="Software Name"/>

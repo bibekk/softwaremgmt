@@ -3,16 +3,20 @@ import React from 'react';
 class SoftwareModel extends React.Component{
      constructor(){
          super();
-         this._api = "http://localhost:3000";
+         this._api = "http://192.168.1.131:3000";
          this.getMaxID = this.getMaxID.bind(this);
          this.addSoftware = this.addSoftware.bind(this);
      }
     
      getSoftwareList() { 
         var _api = this._api; 
+        var fHeaders = new Headers();
+        fHeaders.append('Cache-control','no-cache');
+         
         return new Promise(function (resolve, reject) {  
             fetch(_api +"/Softwares", {
-                method: 'get'
+                method: 'get',
+                headers: fHeaders
             }).then(function (response) {
                 return response.json();
             }).then(function (data) {

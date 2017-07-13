@@ -112,19 +112,18 @@ class SoftwareCategory extends Component {
            }
 
          return(
-           <div>
-             <h2>Software Categories</h2>
-             <div>
-                <button className='btn btn-primary'><span className='glyphicon glyphicon-plus' onClick={()=>{this.setState({addMode: true})}}>Add</span></button>
-             {addCat}
-             </div>
-            <br/><br/>
-             <span className='label label-info'>{this.state.categories.length} categories</span>
-             <ul className='list-group'>
-                {cat}
-             </ul>
-          
-             </div>
+           <div className='sl-container'>
+                 <h2>Software Categories</h2>
+                 <div>
+                    <button className='btn btn-primary'><span className='glyphicon glyphicon-plus' onClick={()=>{this.setState({addMode: true})}}>Add</span></button>
+                 {addCat}
+                 </div>
+                <br/><br/>
+                 <span className='label label-info'>{this.state.categories.length} categories</span>
+                 <ul className='list-group'>
+                    {cat}
+                 </ul>
+            </div>
          );
                   
 

@@ -2,18 +2,49 @@
     margin: 10px;
 }
 
+div.sl-container{
+    background-color: #ccc;
+    padding: 20px;
+}
+
 .software-nav li {
     border-top: 1px solid #ebebeb;
     border-left: 1px solid #ebebeb;
     padding: 3px 5px 5px 2px;
     cursor: pointer;
+    border-width: 3px;
     
 }
 .software-nav li:last-child {
     border-right: 1px solid #ebebeb;
+    border-width: 3px;
 }
+
+
+div.softwareList ul {
+    border: 2px solid #ebebeb;
+    padding: 3px;
+    background-color: #ebebeb;
+}
+
+
+div.softwareList ul li {
+    background-color: #fff;
+    font-weight: bold;
+}
+div.softwareList ul li:nth-child(odd) {
+    background-color: #fff;
+}
+
+span.badge {
+    background-color: #8898c0;
+}
+
 .active {
     background-color: #ebebeb;
     font-weight: bold;
 }
 
+ul.navbar-static-top .active{
+    background-color: #ccc;
+}

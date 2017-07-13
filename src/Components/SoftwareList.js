@@ -23,11 +23,22 @@ class SoftwareList extends Component {
         //instantiate the Software model
         this.sm = new SoftwareModel(); 
         this.cm = new CategoryModel();
+      //  
+       // this.getSoftwareList();
+        //this.getSoftwareCategories();
     }
     
     componentWillMount(){
         this.getSoftwareList();
         this.getSoftwareCategories();        
+    }
+    
+    componentDidUpdate(prevProps,prevState){
+        console.log(this.state,prevState);
+        if(this.state !== prevState && this.state.softwares.length === 0){
+            this.getSoftwareCategories();
+            this.getSoftwareList();
+        }
     }
     
     getSoftwareList(){
@@ -113,7 +124,7 @@ class SoftwareList extends Component {
 
 
          return(
-           <div>
+           <div className='sl-container'>
              <h2>Software Lists</h2>
              <div>
                <ul className ="software-nav nav nav-tabs">

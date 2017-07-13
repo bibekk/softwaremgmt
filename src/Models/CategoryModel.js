@@ -3,15 +3,19 @@ import React from 'react';
 class CategoryModel extends React.Component{
     constructor(){
          super();
-         this._api = "http://localhost:3000";
+         this._api = "http://192.168.1.131:3000";
       //   this.getSoftwareList = this.getSoftwareList.bind(this);
      }
     
      getAllCategories() { 
         var _api = this._api; 
+        var fHeaders = new Headers();
+        fHeaders.append('Cache-control','no-cache');
+         
         return new Promise(function (resolve, reject) {  
             fetch(_api + "/Softwares/category", {
-                method: 'get'
+                method: 'get',
+                headers: fHeaders
             }).then(function (response) {
                 return response.json();
             }).then(function (data) {
