@@ -3,7 +3,7 @@ import React from 'react';
 class CategoryModel extends React.Component{
     constructor(){
          super();
-         this._api = "http://192.168.1.131:3000";
+         this._api = "http://localhost:3000";
       //   this.getSoftwareList = this.getSoftwareList.bind(this);
      }
     

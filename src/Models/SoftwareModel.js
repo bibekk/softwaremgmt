@@ -3,7 +3,7 @@ import React from 'react';
 class SoftwareModel extends React.Component{
      constructor(){
          super();
-         this._api = "http://192.168.1.131:3000";
+         this._api = "http://localhost:3000";
          this.getMaxID = this.getMaxID.bind(this);
          this.addSoftware = this.addSoftware.bind(this);
      }
@@ -13,17 +13,13 @@ class SoftwareModel extends React.Component{
         var fHeaders = new Headers();
         fHeaders.append('Cache-control','no-cache');
          
-        return new Promise(function (resolve, reject) {  
+        return new Promise((resolve, reject) => {  
             fetch(_api +"/Softwares", {
                 method: 'get',
                 headers: fHeaders
-            }).then(function (response) {
-                return response.json();
-            }).then(function (data) {
-                resolve(data);
-            }).catch(function (err) {
-                reject(err);
-            })
+            }).then(response =>response.json())
+            .then(data => resolve(data))
+            .catch(err =>reject(err))
         });
     }
     

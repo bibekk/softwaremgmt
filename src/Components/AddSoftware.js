@@ -58,7 +58,7 @@ class AddSoftware extends React.Component{
            <div className='sl-container'>
               <h2>Add Software</h2>
               <div className='form-group'>
-                <input className='form-control' type="text" ref="txtName" placeholder="Software Name"/>
+                <input className='form-control' type="text" ref="txtName" placeholder="Software Name" autoFocus/>
               </div>
               <div className='form-group'>
                  <select className='form-control' ref="selType">

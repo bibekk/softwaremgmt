@@ -25,6 +25,12 @@ class SoftwareCategory extends Component {
     componentWillMount(){
         this.getAllCategories();
     }
+    
+    componentDidMount(){
+        if(this.state.editModeIndex !== null){
+            console.log(this.refs.software_type.value);
+        }
+    }
 
     setData(data) {
         var s = this.state; 
@@ -87,7 +93,7 @@ class SoftwareCategory extends Component {
                    <li key ={v.tbl_software_typeid}>
                         <div>
                             <div className='form-group'>
-                                <input type="text" ref="software_type" className='form-control' defaultValue={v.software_type} />
+                                <input type="text" ref="software_type" className='form-control' defaultValue={v.software_type} autoFocus/>
                             </div>
                             <button className='btn btn-primary ' onClick={()=>this.updateCategory(v.tbl_software_typeid)}>Update</button>
                             <button className='btn btn-danger ' onClick={()=>{  this.setState({editModeIndex:null}) }}>Cancel</button>
@@ -100,7 +106,7 @@ class SoftwareCategory extends Component {
            if(this.state.addMode){
                addCat.push(<div key='100'><br/>
                            <div className='form-group'>
-                                <input placeholder='Category' type='text' className='form-control' ref='cat'/>
+                                <input placeholder='Category' type='text' className='form-control' ref='cat' autoFocus/>
                            </div>
                            <div className='form-group'>
                                 <button className='btn btn-primary' onClick={this.addCategory}>Add</button>
